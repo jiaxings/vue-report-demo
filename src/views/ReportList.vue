@@ -19,7 +19,10 @@ export default {
   },
   components: {ReportListItem},
   created: function () {
-    this.reports = api.reports.list()
+    api.reports.list().then((value) => {
+      console.log('Got reports: ' + JSON.stringify(value))
+      this.reports = value
+    })
   }
 }
 </script>

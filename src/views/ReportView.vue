@@ -26,12 +26,14 @@ export default {
   created: function () {
     var id = this.$route.params.id
     if (id) {
-      var report = api.reports.get(id)
-      if (report) {
-        this.title = report.title
-        this.layout = report.template.component || 'linear-layout'
-        this.children = report.template.children || []
-      }
+      api.reports.get(id).then((report) => {
+        if (report) {
+          console.log(`Got report ${JSON.stringify(report)}`)
+          this.title = report.title
+          this.layout = report.template.component || 'linear-layout'
+          this.children = report.template.children || []
+        }
+      })
     }
   }
 }

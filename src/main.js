@@ -21,3 +21,20 @@ new Vue({
     App
   }
 })
+
+// let test = new Promise((resolve, reject) => {
+//   console.log('c')
+//   setTimeout(() => resolve('1'), 1000)
+// })
+console.log('r')
+let test = Promise.resolve(1)
+test.then((value) => {
+  console.log('c1')
+  return value + '2'
+}).then((value) => {
+  console.log('c2')
+  return value + 3
+}).then((value) => {
+  console.log('c3')
+  console.log(value)
+})
