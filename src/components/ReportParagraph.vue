@@ -11,14 +11,14 @@ export default {
       type: String,
       default: 'No Content'
     },
-    context: {
+    data: {
       type: Object,
       required: true
     }
   },
   computed: {
     cooked: function () {
-      return Mustache.render(this.content, this.context)
+      return Mustache.render(this.content, this.data)
     }
   }
 }

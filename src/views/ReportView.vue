@@ -30,8 +30,8 @@ export default {
         if (report) {
           console.log(`Got report ${JSON.stringify(report)}`)
           this.title = report.title
-          this.layout = report.template.component || 'linear-layout'
-          this.children = report.template.children || []
+          this.layout = report.layout || 'linear-layout'
+          this.children = report.components || []
         }
       })
     }

@@ -38,3 +38,17 @@ test.then((value) => {
   console.log('c3')
   console.log(value)
 })
+
+Vue.http.get('/uaa/self').then(resp => {
+  console.log('get user info: ' + resp.status)
+  console.log('body: ' + JSON.stringify(resp.json()))
+  Vue.http.get('/api/reports').then(resp => {
+    console.log('get /api/reports: ' + resp.status)
+    console.log('body: ' + JSON.stringify(resp.json()))
+  }).catch(resp => {
+    console.log('get /api/reports failed: ' + resp.status)
+  })
+}).catch(resp => {
+  console.log('get user info failed: ' + resp.status)
+  console.log('body: ' + resp.text())
+})
