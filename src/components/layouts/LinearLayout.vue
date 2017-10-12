@@ -1,8 +1,8 @@
 <template>
   <div class="linear-layout-container container">
-    <div class="linear-layout-item row" v-for="(child, index) in children" :key="index">
-      <chart v-if="child.component === 'chart'" :options="child.data"></chart>
-      <component v-else :is="child.component" v-bind="child.options" striped="child.component == 'b-table'"></component>
+    <div class="linear-layout-item" v-for="(child, index) in children" :key="index">
+      <chart v-if="child.type === 'chart'" :options="child.data"></chart>
+      <component v-else :is="child.type" :options="child.options" v-bind="child.options.extra" striped="child.component == 'b-table'"></component>
     </div>
   </div>
 </template>
@@ -10,6 +10,7 @@
 import ECharts from 'vue-echarts'
 import ReportParagraph from '@/components/ReportParagraph.vue'
 import VeLine from 'v-charts/lib/line'
+import VsLine from '@/components/VsLine'
 
 export default {
   name: 'linear-layout',
@@ -22,7 +23,11 @@ export default {
   components: {
     chart: ECharts,
     'report-paragraph': ReportParagraph,
-    VeLine
+    VeLine,
+    VsLine
+  },
+  created: function () {
+    console.log('LinearLayout created')
   }
 }
 </script>
